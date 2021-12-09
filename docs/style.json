@@ -1,0 +1,236 @@
+{
+  "version": 8,
+  "center": [
+    138.779256,
+    35.158042
+  ],
+  "zoom": 17,
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "rgb(40, 40, 40)"
+      }
+    },
+    {
+      "id": "relief",
+      "type": "raster",
+      "source": "relief",
+      "minzoom": 0,
+      "maxzoom": 9,
+      "paint": {
+        "raster-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          1,
+          10,
+          0
+        ]
+      }
+    },
+    {
+      "id": "adm",
+      "type": "fill",
+      "source": "adm",
+      "source-layer": "AdmArea",
+      "paint": {
+        "fill-color": "rgb(91, 146, 229)",
+        "fill-outline-color": "rgba(91, 146, 229, 0)",
+        "fill-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          0,
+          10,
+          1
+        ]
+      }
+    },
+    {
+      "id": "grid",
+      "source": "grid",
+      "source-layer": "sizuokaLP0",
+      "type": "fill",
+      "paint": {
+        "fill-color": "rgb(60, 60, 60)",
+        "fill-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          0,
+          16,
+          1
+        ]
+      }
+    },
+    {
+      "id": "voxel",
+      "type": "fill-extrusion",
+      "source": "voxel",
+      "source-layer": "voxel",
+      "paint": {
+        "fill-extrusion-base": [
+          "get",
+          "h"
+        ],
+        "fill-extrusion-color": [
+          "interpolate-lab",
+          [
+            "cubic-bezier",
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          [
+            "%",
+            [
+              "+",
+              [
+                "/",
+                [
+                  "get",
+                  "h"
+                ],
+                256
+              ],
+              0.27
+            ],
+            1
+          ],
+          0,
+          "#F2FEFB",
+          0.04,
+          "#FFF6C8",
+          0.08,
+          "#F5C85E",
+          0.12,
+          "#CB7405",
+          0.16,
+          "#7D00A0",
+          0.2,
+          "#0068EC",
+          0.24,
+          "#00C1FF",
+          0.28,
+          "#86F5DE",
+          0.32,
+          "#DCFF85",
+          0.36,
+          "#FFE200",
+          0.4,
+          "#FF9E7B",
+          0.44,
+          "#F138D5",
+          0.48,
+          "#9A42FB",
+          0.52,
+          "#00A3ED",
+          0.56,
+          "#00E1B1",
+          0.6,
+          "#4EF95F",
+          0.64,
+          "#D6EC69",
+          0.68,
+          "#FFBFB7",
+          0.72,
+          "#FF7FE6",
+          0.76,
+          "#F461EB",
+          0.8,
+          "#9D8FC9",
+          0.84,
+          "#00C495",
+          0.88,
+          "#00E382",
+          0.92,
+          "#6BE6A8",
+          0.96,
+          "#CFD1D0",
+          1,
+          "#F2FEFB"
+        ],
+        "fill-extrusion-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          0,
+          12,
+          1
+        ],
+        "fill-extrusion-height": [
+          "+",
+          [
+            "get",
+            "h"
+          ],
+          [
+            "get",
+            "spacing"
+          ]
+        ]
+      }
+    }
+  ],
+  "sources": {
+    "voxel": {
+      "type": "vector",
+      "attribution": "出典:静岡県ポイントクラウドデータベース",
+      "minzoom": 10,
+      "maxzoom": 18,
+      "tiles": [
+        "https://x.optgeo.org/kid-c/zxy/{z}/{x}/{y}.pbf"
+      ]
+    },
+    "adm": {
+      "type": "vector",
+      "attribution": "<a title='測量法に基づく国土地理院長承認(使用)R 2JHs 1065'>R 2JHs 1065</a>",
+      "minzoom": 7,
+      "maxzoom": 13,
+      "tiles": [
+        "https://optgeo.github.io/fgd-adm/zxy/{z}/{x}/{y}.pbf"
+      ]
+    },
+    "relief": {
+      "type": "raster",
+      "minzoom": 0,
+      "maxzoom": 5,
+      "tileSize": 512,
+      "tiles": [
+        "https://optgeo.github.io/relief/zxy/{z}/{x}/{y}.png"
+      ]
+    },
+    "grid": {
+      "type": "vector",
+      "attribution": "<a href=\"https://www.geospatial.jp/ckan/dataset/shizuoka-2019-pointcloud/resource/d5e98a7b-f15c-45b0-bf40-0287f5b1de68\">静岡県富士山南東部・伊豆東部点群データ:LP データ(静岡県／G空間情報センター)</a>",
+      "minzoom": 10,
+      "maxzoom": 18,
+      "tiles": [
+        "https://gic-shizuoka.s3-ap-northeast-1.amazonaws.com/2020/Vectortile/LP00/{z}/{x}/{y}.pbf"
+      ]
+    }
+  }
+}
